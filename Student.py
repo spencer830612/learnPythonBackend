@@ -3,7 +3,7 @@ class Student():
         self.firstName = firstName
         self.secondName = secondName
         self.number = number
-        self.gradeSequenceList: list[object] = []
+        self.gradeSequenceList: list[list[int]] = []
 
     def addGradeList(self, gradeList: list[int]):
         if len(gradeList) != 3:
