@@ -3,11 +3,12 @@ from Student import Student
 
 class ScreenSelect():
     def __init__(self, studentList: list[Student]):
-        self.screenSelect = [
+        self.options = [
             SelectMethod("Print student's grade", self.printStudentGrade),
             SelectMethod("Print subject score", self.printSubjectScore),
             SelectMethod("Rank Student", self.rankStudent),
-            SelectMethod("Search for name", self.searchForName)
+            SelectMethod("Search for name", self.searchForName),
+            SelectMethod("Exit", self.exit)
         ]
         self.studentList = studentList
 
@@ -23,8 +24,11 @@ class ScreenSelect():
     def searchForName(self):
         pass
 
+    def exit(self):
+        pass
+
 
 class SelectMethod():
     def __init__(self, description: str, selectMethod):
         self.description = description
-        self.selectMethod = selectMethod
+        self.method = selectMethod

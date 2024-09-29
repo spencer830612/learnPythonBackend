@@ -5,17 +5,16 @@ from ScreenSelect import ScreenSelect
 def informationBeforeInput(screenSelect: ScreenSelect) -> None:
     index = 1
     print("\n")
-    for select in screenSelect.screenSelect:
+    for select in screenSelect.options:
         print(str(index) + ". " + select.description)
         index += 1
-    print(str(index) + ". Exit")
 
 
 def getChoosenFromInput() -> int:
     while True:
         try:
             choose = int(input("Please choose one and enter its number:\n"))
-            if (choose > len(screenSelect.screenSelect)):
+            if (choose > len(screenSelect.options)):
                 print("Please enter a number in the list")
                 continue
             break
@@ -31,4 +30,4 @@ if studentList is None:
 screenSelect = ScreenSelect(studentList)
 informationBeforeInput(screenSelect)
 choose: int = getChoosenFromInput()
-screenSelect.screenSelect[choose - 1].selectMethod()
+screenSelect.options[choose - 1].method()
