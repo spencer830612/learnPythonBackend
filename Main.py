@@ -25,6 +25,9 @@ def getChoosenFromInput() -> int:
 
 
 studentList = loadStudentData()
+if studentList is None:
+    # TODO("Other error handling")
+    exit(1)
 screenSelect = ScreenSelect(studentList)
 informationBeforeInput(screenSelect)
 choose: int = getChoosenFromInput()

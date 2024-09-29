@@ -22,20 +22,27 @@ def __addNewGrade(gradeList: list[str], student: Student) -> None:
     student.addGradeList(intList)
 
 
-def loadStudentData() -> list[Student]:
-    with open('student.txt') as content:
-        line = content.readline()
-        studentList: list[Student] = []
-        student = None
-        while line:
-            lineSplit = line.split(" ")
-            if (len(lineSplit) == 6):
-                if (student is not None):
-                    studentList.append(student)
-                student = __buildStudentInformation(lineSplit)
-            elif (len(lineSplit) == 3):
-                if (student is not None):
-                    __addNewGrade(lineSplit, student)
+def loadStudentData() -> list[Student] | None:
+    try:
+        with open('student.txt') as content:
             line = content.readline()
+            studentList: list[Student] = []
+            student = None
+            while line:
+                lineSplit = line.split(" ")
+                if (len(lineSplit) == 6):
+                    if (student is not None):
+                        studentList.append(student)
+                    student = __buildStudentInformation(lineSplit)
+                elif (len(lineSplit) == 3):
+                    if (student is not None):
+                        __addNewGrade(lineSplit, student)
+                line = content.readline()
+            if (student is not None):
+                studentList.append(student)
 
-    return studentList
+        return studentList
+    except (FileNotFoundError, PermissionError, OSError) as error:
+        print("File not found or permission error")
+        return None
+        # TODO(report(error))
