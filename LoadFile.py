@@ -52,3 +52,11 @@ def loadStudentData() -> list[Student] | None:
         print("File not found or permission error")
         return None
         # TODO(report(error))
+
+
+def printStudentData(studentList: list[Student]) -> None:
+    for student in studentList:
+        print(student.firstName + " " + student.secondName + " " + student.number)
+        for gradeList in student.gradeSequenceList:
+            print(gradeList[0], gradeList[1], gradeList[2])
+        print("\n")
