@@ -27,6 +27,8 @@ def __addNewGrade(gradeList: list[str], student: Student) -> None:
 
 
 def loadStudentData() -> list[Student] | None:
+    # 讀取檔案，並轉換成 Studnet 的串獵物件
+    # 輸出：讀取成功回傳 Student 物件串列，否則回傳 None        
     try:
         with open('student.txt') as content:
             line = content.readline()
