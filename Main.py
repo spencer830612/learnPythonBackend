@@ -1,4 +1,4 @@
-from LoadFile import loadStudentData
+from LoadFile import loadStudentData, printStudentData
 from ScreenSelect import ScreenSelect
 
 
@@ -11,13 +11,14 @@ def informationBeforeInput(screenSelect: ScreenSelect) -> None:
 
 
 def getChoosenFromInput() -> int:
-    while True:
+    isAsked = True
+    while isAsked:
         try:
             choose = int(input("Please choose one and enter its number:\n"))
             if (choose > len(screenSelect.options)):
                 print("Please enter a number in the list")
-                continue
-            break
+            else:
+                isAsked = False
         except ValueError:
             print("Please enter a number")
     return choose
@@ -27,6 +28,7 @@ studentList = loadStudentData()
 if studentList is None:
     # TODO("Other error handling")
     exit(1)
+printStudentData(studentList)
 screenSelect = ScreenSelect(studentList)
 informationBeforeInput(screenSelect)
 choose: int = getChoosenFromInput()

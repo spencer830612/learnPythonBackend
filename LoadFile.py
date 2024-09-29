@@ -1,23 +1,27 @@
+from CheckValid import isVaildForAddGrade, isVaildForAddNumber
 from Student import Student
 
 
 def __buildStudentInformation(studentList: list[str]) -> Student:
+    # 根據輸入字串建立 Student 物件
     if len(studentList) != 6:
         raise ValueError("The number of student information is incorrect")
     fistName = studentList[0]
     secondName = studentList[1]
     number = studentList[2]
-    firstGrade = eval(studentList[3])
-    secondGrade = eval(studentList[4])
-    thirdGrade = eval(studentList[5])
+    if (isVaildForAddNumber(number) is not True):
+        # TODO(reportAndHandle(error))
+        pass
     student = Student(fistName, secondName, number)
-    student.addGradeList([firstGrade, secondGrade, thirdGrade])
+    __addNewGrade(studentList[3:], student)
     return student
 
 
 def __addNewGrade(gradeList: list[str], student: Student) -> None:
-    if len(gradeList) != 3:
-        raise ValueError("The number of grades is incorrect")
+    # 根據輸入字串新增成績
+    if (isVaildForAddGrade(gradeList) is not True):
+        # TODO(reportAndHandle(error))
+        pass
     intList = [eval(i) for i in gradeList]
     student.addGradeList(intList)
 
