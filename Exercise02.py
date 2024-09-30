@@ -46,8 +46,8 @@ def print_subject_scores(student_list: list[str]) -> None:
     print(f"Third subject: total = {sum_third_subject}, average = {average_third_subject}")
 
 
-def rank_students(student_list: list[list[str]]) -> None:
-   return  
+def rank_students(student_list: list[str]) -> None:
+    show_all_students_grade(sorted(student_list, key=mutiple_sort, reverse=True))
 
 
 def mutiple_sort(student: str):
@@ -57,6 +57,7 @@ def mutiple_sort(student: str):
     third_grade = int(student_information[3])
     sum_grade = first_grade + second_grade + third_grade
     return (sum_grade, first_grade, second_grade, third_grade)
+
 
 def search_for_name(student_list: list[str]) -> None:
     name = input("Please enter the name:")
