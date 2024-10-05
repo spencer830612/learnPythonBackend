@@ -21,9 +21,10 @@ def show_all_students_grade(student_list: list[Student]) -> None:
 
 def show_student_grade(student: Student) -> None:
     sum = student.grade1 + student.grade2 + student.grade3
-    average = "{:.2f}".format(sum / 3.0)
+    average_string = "{:.2f}".format(sum / 3.0)
+    sum_string = "{:.2f}".format(sum)
     print(f"{student.name} {student.grade1} {student.grade2} {student.grade3},"
-          f"sum = {sum}, average = {average}")
+          f"sum = {sum_string}, average = {average_string}")
 
 
 def print_subject_scores(student_list: list[Student]) -> None:
@@ -38,9 +39,12 @@ def print_subject_scores(student_list: list[Student]) -> None:
     average_first_subject = "{:.2f}".format(sum_first_subject / count)
     average_second_subject = "{:.2f}".format(sum_second_subject / count)
     average_third_subject = "{:.2f}".format(sum_third_subject / count)
-    print(f"First subject: total = {sum_first_subject}, average = {average_first_subject}")
-    print(f"Second subject: total = {sum_second_subject}, average = {average_second_subject}")
-    print(f"Third subject: total = {sum_third_subject}, average = {average_third_subject}")
+    sum_first_subject_string = "{:.2f}".format(sum_first_subject)
+    sum_second_subject_string = "{:.2f}".format(sum_second_subject)
+    sum_third_subject_string = "{:.2f}".format(sum_third_subject)
+    print(f"First subject: total = {sum_first_subject_string}, average = {average_first_subject}")
+    print(f"Second subject: total = {sum_second_subject_string}, average = {average_second_subject}")
+    print(f"Third subject: total = {sum_third_subject_string}, average = {average_third_subject}")
 
 
 def rank_students(student_list: list[Student]) -> None:
@@ -67,9 +71,9 @@ def transfer_to_students_list(student_raw_list: list[str]) -> list[Student]:
     for student_raw in student_raw_list:
         student_information = student_raw.split(' ')
         name = student_information[0]
-        grade1 = int(student_information[1])
-        grade2 = int(student_information[2])
-        grade3 = int(student_information[3])
+        grade1 = float(student_information[1])
+        grade2 = float(student_information[2])
+        grade3 = float(student_information[3])
         student = Student(name, grade1, grade2, grade3)
         students_list.append(student)
     return students_list

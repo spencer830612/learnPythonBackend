@@ -19,13 +19,14 @@ def show_all_students_grade(student_raw_list: list[str]) -> None:
 def show_student_grade(student: str) -> None:
     student_information = student.split(' ')
     name = student_information[0]
-    first_grade = int(student_information[1])
-    second_grade = int(student_information[2])
-    third_grade = int(student_information[3])
+    first_grade = float(student_information[1])
+    second_grade = float(student_information[2])
+    third_grade = float(student_information[3])
     sum = first_grade + second_grade + third_grade
-    average = "{:.2f}".format(sum / 3.0)
+    sum_string = "{:.2f}".format(sum)
+    average_string = "{:.2f}".format(sum / 3.0)
     print(f"{name} {first_grade} {second_grade} {third_grade}, "
-            f"sum = {sum}, average = {average}")
+          f"sum = {sum_string}, average = {average_string}")
 
 
 def print_subject_scores(student_list: list[str]) -> None:
@@ -35,15 +36,18 @@ def print_subject_scores(student_list: list[str]) -> None:
     sum_third_subject = 0.0
     for student in student_list:
         student_information = student.split(' ')
-        sum_first_subject += int(student_information[1])
-        sum_second_subject += int(student_information[2])
-        sum_third_subject += int(student_information[3])
+        sum_first_subject += float(student_information[1])
+        sum_second_subject += float(student_information[2])
+        sum_third_subject += float(student_information[3])
     average_first_subject = "{:.2f}".format(sum_first_subject / count)
     average_second_subject = "{:.2f}".format(sum_second_subject / count)
     average_third_subject = "{:.2f}".format(sum_third_subject / count)
-    print(f"First subject: total = {sum_first_subject}, average = {average_first_subject}")
-    print(f"Second subject: total = {sum_second_subject}, average = {average_second_subject}")
-    print(f"Third subject: total = {sum_third_subject}, average = {average_third_subject}")
+    sum_first_subject_string = "{:.2f}".format(sum_first_subject)
+    sum_second_subject_string = "{:.2f}".format(sum_second_subject)
+    sum_third_subject_string = "{:.2f}".format(sum_third_subject)
+    print(f"First subject: total = {sum_first_subject_string}, average = {average_first_subject}")
+    print(f"Second subject: total = {sum_second_subject_string}, average = {average_second_subject}")
+    print(f"Third subject: total = {sum_third_subject_string}, average = {average_third_subject}")
 
 
 def rank_students(student_list: list[str]) -> None:
@@ -52,9 +56,9 @@ def rank_students(student_list: list[str]) -> None:
 
 def mutiple_sort(student: str):
     student_information = student.split(' ')
-    first_grade = int(student_information[1])
-    second_grade = int(student_information[2])
-    third_grade = int(student_information[3])
+    first_grade = float(student_information[1])
+    second_grade = float(student_information[2])
+    third_grade = float(student_information[3])
     sum_grade = first_grade + second_grade + third_grade
     return (sum_grade, first_grade, second_grade, third_grade)
 

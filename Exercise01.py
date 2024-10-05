@@ -15,10 +15,11 @@ if __name__ == '__main__':
     for line in lines:
         student_information = line.split(' ')
         name = student_information[0]
-        first_grade = int(student_information[1])
-        second_grade = int(student_information[2])
-        third_grade = int(student_information[3])
+        first_grade = float(student_information[1])
+        second_grade = float(student_information[2])
+        third_grade = float(student_information[3])
         sum = first_grade + second_grade + third_grade
-        average = "{:.2f}".format(sum / 3.0)
+        sum_string = "{:.2f}".format(sum)
+        average_string = "{:.2f}".format(sum / 3.0)
         print(f"{name} {first_grade} {second_grade} {third_grade}, "
-              f"sum = {sum}, average = {average}")
+              f"sum = {sum_string}, average = {average_string}")

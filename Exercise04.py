@@ -24,8 +24,9 @@ def show_student_grade(student: Student) -> None:
     for grade in student.grade_list:
         sum = grade[0] + grade[1] + grade[2]
         average = "{:.2f}".format(sum / 3.0)
+        sum_string = "{:.2f}".format(sum)
         message += (f"{grade[0]} {grade[1]} {grade[2]}, "
-                    f"sum = {sum}, average = {average}\n")
+                    f"sum = {sum_string}, average = {average}\n")
     print(message)
 
 
@@ -43,9 +44,12 @@ def print_subject_scores(student_list: list[Student]) -> None:
     average_first_subject = "{:.2f}".format(sum_first_subject / times)
     average_second_subject = "{:.2f}".format(sum_second_subject / times)
     average_third_subject = "{:.2f}".format(sum_third_subject / times)
-    print(f"First subject: total = {sum_first_subject}, average = {average_first_subject}")
-    print(f"Second subject: total = {sum_second_subject}, average = {average_second_subject}")
-    print(f"Third subject: total = {sum_third_subject}, average = {average_third_subject}")
+    sum_first_subject_string = "{:.2f}".format(sum_first_subject)
+    sum_second_subject_string = "{:.2f}".format(sum_second_subject)
+    sum_third_subject_string = "{:.2f}".format(sum_third_subject)
+    print(f"First subject: total = {sum_first_subject_string}, average = {average_first_subject}")
+    print(f"Second subject: total = {sum_second_subject_string}, average = {average_second_subject}")
+    print(f"Third subject: total = {sum_third_subject_string}, average = {average_third_subject}")
 
 
 def rank_students(student_list: list[Student]) -> None:
@@ -61,11 +65,14 @@ def mutiple_sort(student: Student):
 
 def search_for_name(student_list: list[Student]) -> None:
     name = input("Please enter the name:")
+    is_searchable = False
     for student in student_list:
         full_name = f"{student.first_name} {student.second_name}"
         if (name in full_name):
             show_student_grade(student)
-    print("Can not find")
+            is_searchable = True
+    if not is_searchable:
+        print("Nothing")
 
 
 def transfer_to_students_list(student_raw_list: list[str]) -> list[Student]:
@@ -80,14 +87,14 @@ def transfer_to_students_list(student_raw_list: list[str]) -> list[Student]:
             second_name = student_information[1]
             phone = student_information[2]
             student = Student(first_name, second_name, phone)
-            first_grade = int(student_information[3])
-            second_grade = int(student_information[4])
-            third_grade = int(student_information[5])
+            first_grade = float(student_information[3])
+            second_grade = float(student_information[4])
+            third_grade = float(student_information[5])
             student.add_grade([first_grade, second_grade, third_grade])
         elif len(student_information) == 3 and student is not None:
-            first_grade = int(student_information[0])
-            second_grade = int(student_information[1])
-            third_grade = int(student_information[2])
+            first_grade = float(student_information[0])
+            second_grade = float(student_information[1])
+            third_grade = float(student_information[2])
             student.add_grade([first_grade, second_grade, third_grade])
     if student is not None:
         students_list.append(student)
